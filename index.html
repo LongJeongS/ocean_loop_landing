@@ -2112,9 +2112,25 @@ var SLUGS = {
 };
 
 // ─── AUTH STATE ───────────────────────────────────────────────────────────────
+// Outseta.getUser() returns a Promise. We resolve it and check for a valid
+// Email to determine if the user is genuinely logged in.
 function updateNavAuth() {
-  var loggedIn = false;
-  try { loggedIn = !!(window.Outseta && Outseta.getUser && Outseta.getUser()); } catch(e) {}
+  try {
+    if (window.Outseta && Outseta.getUser) {
+      Promise.resolve(Outseta.getUser()).then(function(user) {
+        var loggedIn = !!(user && user.Email);
+        applyNavAuth(loggedIn);
+      }).catch(function() {
+        applyNavAuth(false);
+      });
+    } else {
+      applyNavAuth(false);
+    }
+  } catch(e) {
+    applyNavAuth(false);
+  }
+}
+function applyNavAuth(loggedIn) {
 
   // Desktop nav
   document.querySelectorAll('.btn-login').forEach(function(btn) {
@@ -2193,6 +2209,18 @@ window.addEventListener('popstate', function(e) {
 
   // Replace state so popstate fires correctly on first back
   try { history.replaceState({ page: id }, '', path || '/'); } catch(e) {}
+
+  // Run initial auth check after a tick to let Outseta SDK hydrate its session state
+  setTimeout(updateNavAuth, 100);
+
+  // Defer initial auth check until Outseta is fully ready
+  // so we don't get false positives from uninitialised state
+  try {
+    if (window.Outseta) {
+      Outseta.on('subscription.get', updateNavAuth);
+      Outseta.on('nocode.done', updateNavAuth);
+    }
+  } catch(e) {}
 
   // Listen for Outseta auth changes (login / logout)
   try {
