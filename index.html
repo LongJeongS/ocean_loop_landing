@@ -2172,9 +2172,7 @@ function navigate(id, btn, pushState) {
   if (window.Outseta) {
     setTimeout(function() {
       try {
-        if (id === 'login') {
-          Outseta.auth.open({ widgetMode: 'login', authenticationCallbackUrl: window.location.origin + '/profile' });
-        } else if (id === 'profile') {
+        if (id === 'profile') {
           Outseta.profile.open({ tab: 'profile' });
         }
       } catch(e) {}
