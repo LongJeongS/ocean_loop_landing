@@ -681,9 +681,13 @@ var o_options = {
     domain: 'ov-loop.outseta.com',
     load: 'auth,customForm,emailList,leadCapture,profile,support',
     callback: function() {
-      // Outseta is fully loaded — trigger deferred navigation if pending
-      if (window._outsetaNavigate) window._outsetaNavigate();
-      // Then update auth nav state
+      // Outseta finished initializing. Re-assert the current page in case
+      // Outseta's DOM scan collapsed it (happens on direct /login loads).
+      var activePage = document.querySelector('.page.active');
+      if (activePage && activePage.id !== 'page-home') {
+        var currentId = activePage.id.replace('page-', '');
+        navigate(currentId, null, false);
+      }
       if (window.updateNavAuth) updateNavAuth();
     }
 };
@@ -2224,33 +2228,11 @@ window.addEventListener('popstate', function(e) {
 // ─── ENTRY POINT: read URL on load ───────────────────────────────────────────
 (function() {
   var path = window.location.pathname;
-  // Normalize trailing slash
   if (path !== '/' && path.slice(-1) === '/') path = path.slice(0, -1);
   var id = ROUTES[path] || 'home';
-
-  // If landing directly on a non-home page, wait for Outseta to finish
-  // initializing before showing the page — otherwise Outseta's DOM scan
-  // runs after navigate() and collapses the active page to zero dimensions.
-  function doNavigate() {
-    navigate(id, null, false);
-    try { history.replaceState({ page: id }, '', path || '/'); } catch(e) {}
-    setTimeout(updateNavAuth, 300);
-  }
-
-  if (id === 'home') {
-    // Home is the default active page in HTML, no delay needed
-    doNavigate();
-  } else {
-    // Defer until Outseta is ready (callback fires) or 1s timeout fallback
-    var done = false;
-    window._outsetaNavigate = function() {
-      if (done) return;
-      done = true;
-      doNavigate();
-    };
-    setTimeout(window._outsetaNavigate, 1000); // fallback
-  }
-})();
+  navigate(id, null, false);
+  try { history.replaceState({ page: id }, '', path || '/'); } catch(e) {}
+  setTimeout(updateNavAuth, 300);
 })();
 
 // ─── MOBILE NAV ───────────────────────────────────────────────────────────────
