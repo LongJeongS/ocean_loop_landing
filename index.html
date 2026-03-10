@@ -679,7 +679,7 @@
 <script>
 var o_options = {
     domain: 'ov-loop.outseta.com',
-    load: 'auth,customForm,emailList,leadCapture,nocode,profile,support',
+    load: 'auth,customForm,emailList,leadCapture,profile,support',
     callback: function() {
       // Outseta is fully loaded — trigger auth nav update
       if (window.updateNavAuth) updateNavAuth();
@@ -2173,6 +2173,30 @@ function navigate(id, btn, pushState) {
         Outseta.profile.open({ tab: 'profile' });
       } catch(e) {}
     }, 100);
+  }
+
+  // For login page: Outseta's embed widget only scans the DOM once on load.
+  // If the container was hidden (display:none) at that point it won't render.
+  // Re-mount by cloning the container, which forces Outseta to re-scan it.
+  if (id === 'login') {
+    setTimeout(function() {
+      try {
+        var container = document.getElementById('outseta-login-container');
+        if (container) {
+          // If the widget iframe/form is already inside, we're done.
+          if (container.querySelector('iframe, form, input')) return;
+          // Otherwise re-trigger Outseta embed scan
+          if (window.Outseta && typeof Outseta.nocode === 'object' && typeof Outseta.nocode.init === 'function') {
+            Outseta.nocode.init();
+          } else {
+            // Fallback: clone the node to force a fresh DOM scan
+            var parent = container.parentNode;
+            var clone = container.cloneNode(true);
+            parent.replaceChild(clone, container);
+          }
+        }
+      } catch(e) {}
+    }, 150);
   }
 
   // Update active nav link in all navs
