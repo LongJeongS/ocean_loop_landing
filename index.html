@@ -2166,38 +2166,9 @@ function navigate(id, btn, pushState) {
   // Show target page
   pageEl.classList.add('active');
 
-  // For Outseta profile page: open the profile widget
-  if (window.Outseta && id === 'profile') {
-    setTimeout(function() {
-      try {
-        Outseta.profile.open({ tab: 'profile' });
-      } catch(e) {}
-    }, 100);
-  }
+  // Profile page uses data-o-profile embed div - no JS call needed.
 
-  // For login page: Outseta's embed widget only scans the DOM once on load.
-  // If the container was hidden (display:none) at that point it won't render.
-  // Re-mount by cloning the container, which forces Outseta to re-scan it.
-  if (id === 'login') {
-    setTimeout(function() {
-      try {
-        var container = document.getElementById('outseta-login-container');
-        if (container) {
-          // If the widget iframe/form is already inside, we're done.
-          if (container.querySelector('iframe, form, input')) return;
-          // Otherwise re-trigger Outseta embed scan
-          if (window.Outseta && typeof Outseta.nocode === 'object' && typeof Outseta.nocode.init === 'function') {
-            Outseta.nocode.init();
-          } else {
-            // Fallback: clone the node to force a fresh DOM scan
-            var parent = container.parentNode;
-            var clone = container.cloneNode(true);
-            parent.replaceChild(clone, container);
-          }
-        }
-      } catch(e) {}
-    }, 150);
-  }
+  // For login page: Outseta embed widget renders automatically via data-o-auth attribute.
 
   // Update active nav link in all navs
   document.querySelectorAll('.nav-links a, .mobile-nav-links a').forEach(function(a) {
@@ -2247,36 +2218,8 @@ window.addEventListener('popstate', function(e) {
   // Replace state so popstate fires correctly on first back
   try { history.replaceState({ page: id }, '', path || '/'); } catch(e) {}
 
-  // Run initial auth check after a tick to let Outseta SDK hydrate its session state
-  setTimeout(updateNavAuth, 100);
-
-  // Defer initial auth check until Outseta is fully ready
-  // so we don't get false positives from uninitialised state
-  try {
-    if (window.Outseta) {
-      Outseta.on('subscription.get', updateNavAuth);
-      Outseta.on('nocode.done', updateNavAuth);
-    }
-  } catch(e) {}
-
-  // Listen for Outseta auth changes (login / logout)
-  try {
-    if (window.Outseta) {
-      Outseta.on('accessToken.set', function() {
-        updateNavAuth();
-        // After login, Outseta redirects to post-login URL (/profile)
-        // If we're on login page and Outseta hasn't redirected yet, do it manually
-        var currentPage = document.querySelector('.page.active');
-        if (currentPage && currentPage.id === 'page-login') {
-          navigate('profile');
-        }
-      });
-      Outseta.on('person.logout', function() {
-        updateNavAuth();
-        navigate('home');
-      });
-    }
-  } catch(e) {}
+  // Run initial auth check after Outseta SDK has had time to hydrate
+  setTimeout(updateNavAuth, 300);
 })();
 
 // ─── MOBILE NAV ───────────────────────────────────────────────────────────────
