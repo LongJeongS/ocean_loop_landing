@@ -680,16 +680,7 @@
 var o_options = {
     domain: 'ov-loop.outseta.com',
     load: 'auth,customForm,emailList,leadCapture,profile,support',
-    callback: function() {
-      // Outseta finished initializing. Re-assert the current page in case
-      // Outseta's DOM scan collapsed it (happens on direct /login loads).
-      var activePage = document.querySelector('.page.active');
-      if (activePage && activePage.id !== 'page-home') {
-        var currentId = activePage.id.replace('page-', '');
-        navigate(currentId, null, false);
-      }
-      if (window.updateNavAuth) updateNavAuth();
-    }
+    callback: function() {}
 };
 </script>
 <script src="https://cdn.outseta.com/outseta.min.js"
@@ -2031,21 +2022,9 @@ var o_options = {
     </div>
   </div>
 </nav>
-  <div style="min-height:calc(100vh - 64px);background:var(--bg);display:flex;align-items:center;justify-content:center;padding:48px 24px;">
-    <div style="width:100%;max-width:480px;">
-      <div style="text-align:center;margin-bottom:32px;">
-        <div class="section-badge" style="display:inline-flex;margin-bottom:16px;">🔐 Member Login</div>
-        <h1 style="font-family:'DM Serif Display',serif;font-size:36px;color:var(--navy);margin-bottom:8px;">Welcome back.</h1>
-        <p style="font-size:14px;color:var(--text-mid);">Sign in to your OceanLoop account to manage your subscription and updates.</p>
-      </div>
-      <div id="outseta-login-container" data-o-auth="1"
-           data-mode="embed"
-           data-widget-mode="login"
-           data-authentication-callback-url="/profile"
-           data-o-spa="0">
-      </div>
-      <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-light);">Don't have an account? <a href="#" onclick="navigate('checkout')" style="color:var(--orange);font-weight:600;text-decoration:none;">Sign up →</a></p>
-    </div>
+  <div style="padding:80px 24px;text-align:center;">
+    <h1 style="font-size:48px;color:var(--navy);">LOGIN PAGE</h1>
+    <p style="font-size:20px;">Routing test — no Outseta embed</p>
   </div>
   <footer><div class="footer-inner"><div class="footer-links"><a href="#" onclick="navigate('home')">Home</a><a href="#" onclick="navigate('features')">Features</a><a href="#" onclick="navigate('updates')">OS Updates</a><a href="#" onclick="navigate('pricing')">Pricing</a><a href="#" onclick="navigate('support')">Support &amp; FAQ</a><a href="#" onclick="navigate('contact')">Contact</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
 </div>
@@ -2125,50 +2104,9 @@ var SLUGS = {
   'profile':  '/profile'
 };
 
-// ─── AUTH STATE ───────────────────────────────────────────────────────────────
-// Outseta.getUser() returns a Promise. We resolve it and check for a valid
-// Email to determine if the user is genuinely logged in.
-function updateNavAuth() {
-  try {
-    if (window.Outseta && Outseta.getUser) {
-      Promise.resolve(Outseta.getUser()).then(function(user) {
-        var loggedIn = !!(user && user.Email);
-        applyNavAuth(loggedIn);
-      }).catch(function() {
-        applyNavAuth(false);
-      });
-    } else {
-      applyNavAuth(false);
-    }
-  } catch(e) {
-    applyNavAuth(false);
-  }
-}
-function applyNavAuth(loggedIn) {
-  // If already logged in and on the login page, redirect to profile
-  if (loggedIn) {
-    var activePage = document.querySelector('.page.active');
-    if (activePage && activePage.id === 'page-login') {
-      navigate('profile');
-      return;
-    }
-  }
-
-  // Desktop nav
-  document.querySelectorAll('.btn-login').forEach(function(btn) {
-    if (loggedIn) {
-      btn.textContent = 'My Account';
-      btn.onclick = function() { navigate('profile'); };
-    } else {
-      btn.textContent = 'Login';
-      btn.onclick = function() { navigate('login'); };
-    }
-  });
-  // Desktop signup → hide when logged in
-  document.querySelectorAll('.btn-signup').forEach(function(btn) {
-    btn.style.display = loggedIn ? 'none' : '';
-  });
-}
+// ─── AUTH STATE (stubbed for routing test) ────────────────────────────────────
+function updateNavAuth() {}
+function applyNavAuth() {}
 
 // ─── CORE NAVIGATE FUNCTION ───────────────────────────────────────────────────
 function navigate(id, btn, pushState) {
