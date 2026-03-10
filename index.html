@@ -2166,17 +2166,13 @@ function navigate(id, btn, pushState) {
   // Show target page
   pageEl.classList.add('active');
 
-  // For Outseta-powered pages: open the widget programmatically.
-  // Embed divs in hidden pages are not reliably mounted by Outseta on initial scan,
-  // so we use the JS API directly after the page becomes visible.
-  if (window.Outseta) {
+  // For Outseta profile page: open the profile widget
+  if (window.Outseta && id === 'profile') {
     setTimeout(function() {
       try {
-        if (id === 'profile') {
-          Outseta.profile.open({ tab: 'profile' });
-        }
+        Outseta.profile.open({ tab: 'profile' });
       } catch(e) {}
-    }, 50);
+    }, 100);
   }
 
   // Update active nav link in all navs
