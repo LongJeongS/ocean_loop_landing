@@ -2110,6 +2110,7 @@ function applyNavAuth() {}
 
 // ─── CORE NAVIGATE FUNCTION ───────────────────────────────────────────────────
 function navigate(id, btn, pushState) {
+  console.log('[router] navigate called, id:', id, new Error().stack.split('\n')[1]);
   if (pushState === undefined) pushState = true;
   var pageEl = document.getElementById('page-' + id);
   if (!pageEl) return;
@@ -2160,6 +2161,7 @@ function showPage(id, btn) {
 // ─── HANDLE BROWSER BACK/FORWARD ─────────────────────────────────────────────
 window.addEventListener('popstate', function(e) {
   var id = (e.state && e.state.page) ? e.state.page : 'home';
+  console.log('[router] popstate fired, id:', id, 'state:', e.state);
   navigate(id, null, false);
 });
 
@@ -2168,8 +2170,9 @@ window.addEventListener('popstate', function(e) {
   var path = window.location.pathname;
   if (path !== '/' && path.slice(-1) === '/') path = path.slice(0, -1);
   var id = ROUTES[path] || 'home';
-  navigate(id, null, false);
+  console.log('[router] entry point, id:', id);
   try { history.replaceState({ page: id }, '', path || '/'); } catch(e) {}
+  navigate(id, null, false);
   setTimeout(updateNavAuth, 300);
 })();
 
