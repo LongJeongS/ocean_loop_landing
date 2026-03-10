@@ -681,7 +681,9 @@ var o_options = {
     domain: 'ov-loop.outseta.com',
     load: 'auth,customForm,emailList,leadCapture,profile,support',
     callback: function() {
-      // Outseta is fully loaded — trigger auth nav update
+      // Outseta is fully loaded — trigger deferred navigation if pending
+      if (window._outsetaNavigate) window._outsetaNavigate();
+      // Then update auth nav state
       if (window.updateNavAuth) updateNavAuth();
     }
 };
@@ -2035,6 +2037,7 @@ var o_options = {
       <div id="outseta-login-container" data-o-auth="1"
            data-mode="embed"
            data-widget-mode="login"
+           data-authentication-callback-url="/profile"
            data-o-spa="0">
       </div>
       <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-light);">Don't have an account? <a href="#" onclick="navigate('checkout')" style="color:var(--orange);font-weight:600;text-decoration:none;">Sign up →</a></p>
@@ -2138,6 +2141,14 @@ function updateNavAuth() {
   }
 }
 function applyNavAuth(loggedIn) {
+  // If already logged in and on the login page, redirect to profile
+  if (loggedIn) {
+    var activePage = document.querySelector('.page.active');
+    if (activePage && activePage.id === 'page-login') {
+      navigate('profile');
+      return;
+    }
+  }
 
   // Desktop nav
   document.querySelectorAll('.btn-login').forEach(function(btn) {
@@ -2216,13 +2227,30 @@ window.addEventListener('popstate', function(e) {
   // Normalize trailing slash
   if (path !== '/' && path.slice(-1) === '/') path = path.slice(0, -1);
   var id = ROUTES[path] || 'home';
-  navigate(id, null, false);
 
-  // Replace state so popstate fires correctly on first back
-  try { history.replaceState({ page: id }, '', path || '/'); } catch(e) {}
+  // If landing directly on a non-home page, wait for Outseta to finish
+  // initializing before showing the page — otherwise Outseta's DOM scan
+  // runs after navigate() and collapses the active page to zero dimensions.
+  function doNavigate() {
+    navigate(id, null, false);
+    try { history.replaceState({ page: id }, '', path || '/'); } catch(e) {}
+    setTimeout(updateNavAuth, 300);
+  }
 
-  // Run initial auth check after Outseta SDK has had time to hydrate
-  setTimeout(updateNavAuth, 300);
+  if (id === 'home') {
+    // Home is the default active page in HTML, no delay needed
+    doNavigate();
+  } else {
+    // Defer until Outseta is ready (callback fires) or 1s timeout fallback
+    var done = false;
+    window._outsetaNavigate = function() {
+      if (done) return;
+      done = true;
+      doNavigate();
+    };
+    setTimeout(window._outsetaNavigate, 1000); // fallback
+  }
+})();
 })();
 
 // ─── MOBILE NAV ───────────────────────────────────────────────────────────────
