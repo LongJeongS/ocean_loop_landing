@@ -682,6 +682,7 @@ var isProd = window.location.origin === 'https://ocean.ovloop.com';
 var o_options = {
     domain: 'ov-loop.outseta.com',
     load: 'auth,customForm,emailList,leadCapture,profile,support',
+    monitorDom: true,
     auth: {
       authenticationCallbackUrl: isProd ? null : window.location.origin + '/profile',
       registrationConfirmationUrl: isProd ? null : window.location.origin + '/checkout'
