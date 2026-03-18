@@ -2188,6 +2188,13 @@ function showPage(id, btn) {
   navigate(id, btn, true);
 }
 
+// Prevent hash-only links from appending trailing "#" in some browsers.
+document.addEventListener('click', function(e) {
+  var link = e.target.closest && e.target.closest('a[href="#"]');
+  if (!link) return;
+  if (link.getAttribute('onclick')) e.preventDefault();
+});
+
 // ─── HANDLE BROWSER BACK/FORWARD ─────────────────────────────────────────────
 window.addEventListener('popstate', function(e) {
   var id = (e.state && e.state.page) ? e.state.page : 'home';
@@ -2197,7 +2204,14 @@ window.addEventListener('popstate', function(e) {
 // ─── ENTRY POINT: read URL on load ───────────────────────────────────────────
 (function() {
   var path = window.location.pathname;
+  var hash = window.location.hash || '';
   if (path !== '/' && path.slice(-1) === '/') path = path.slice(0, -1);
+  // Handle direct links like /features# and hash-routed variants.
+  if (hash === '#') hash = '';
+  if (hash && hash !== '#') {
+    var hashPath = hash.charAt(1) === '/' ? hash.slice(1) : '/' + hash.slice(1);
+    if (ROUTES[hashPath]) path = hashPath;
+  }
   var id = ROUTES[path] || 'home';
   try { history.replaceState({ page: id }, '', path || '/'); } catch(e) {}
   navigate(id, null, false);
