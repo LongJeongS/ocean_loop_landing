@@ -1225,7 +1225,7 @@ var o_options = {
               <div class="uc-pricing"><div class="uc-price">$399</div><div class="uc-price-note">one-time + Tax/VAT</div><button class="btn-add" onclick="showPage('checkout',this)">Get Started →</button><button class="btn-docs" onclick="showPage('updates',this)">📄 User Guide</button></div>
             </div>
             <div class="uc-body">
-              <div class="uc-group"><h4>What's new</h4><ul class="uc-list"><li>Smartphone projection (Android Auto &amp; Apple CarPlay)</li><li>Phone mirroring and AI voice control</li><li>Autokit integration for Android and iOS</li><li>PKC 22 — optimized BLE connectivity, FOB responsiveness, and FOB battery life</li><li>Improved fob response and remote power on</li><li>California Mode</li><li>Siri, Google Assistant, and Alexa support</li></ul></div>
+              <div class="uc-group"><h4>What's new</h4><ul class="uc-list"><li>Smartphone projection (Android Auto &amp; Apple CarPlay)</li><li>Phone mirroring and AI voice control</li><li>Autokit integration for Android and iOS</li><li>PKC 22 — optimized BLE connectivity, FOB responsiveness & battery life</li><li>Improved fob response and remote power on</li><li>California Mode</li><li>Siri, Google Assistant, and Alexa support</li></ul></div>
               <div class="uc-group"><h4>Important notes</h4><ul class="uc-list"><li>Requires USB hardware kit (included with purchase)</li><li>Must have OS 2.5 installed first</li><li>OTA delivery — no dealer visit required</li><li>Available in North America and Europe</li></ul></div>
             </div>
             <div class="uc-footer"><span>⚠️ Requires:</span><span class="req-badge">OS 2.5</span><span style="margin-left:auto;display:flex;align-items:center;gap:12px"><span style="font-size:12px;color:var(--blue);font-weight:500">💰 Also in bundles — <a href="#" onclick="showPage('pricing',this);return false;" style="color:var(--blue);font-weight:600;text-decoration:underline">save more</a></span><a href="#" style="color:var(--blue);text-decoration:none;font-size:12px;font-weight:600">📄 2.6 Release Notes</a></span></div>
@@ -2099,7 +2099,30 @@ var SLUGS = {
 };
 
 // ─── AUTH STATE ───────────────────────────────────────────────────────────────
+function ensureAccountButtons() {
+  document.querySelectorAll('.nav-right').forEach(function(container) {
+    if (container.querySelector('.btn-account')) return;
+    var btn = document.createElement('button');
+    btn.className = 'btn-login btn-account';
+    btn.textContent = 'My Account';
+    btn.style.display = 'none';
+    btn.onclick = function() { navigate('profile'); };
+    container.appendChild(btn);
+  });
+  document.querySelectorAll('.mobile-nav-footer').forEach(function(container) {
+    if (container.querySelector('.btn-account')) return;
+    var btn = document.createElement('button');
+    btn.className = 'btn-signup btn-account';
+    btn.textContent = '👤 My Account';
+    btn.style.width = '100%';
+    btn.style.justifyContent = 'center';
+    btn.style.display = 'none';
+    btn.onclick = function() { navigate('profile'); closeMobileNav(); };
+    container.appendChild(btn);
+  });
+}
 function setNavAuthState(loggedIn) {
+  ensureAccountButtons();
   document.querySelectorAll('.btn-login').forEach(function(el) {
     el.style.display = loggedIn ? 'none' : '';
   });
