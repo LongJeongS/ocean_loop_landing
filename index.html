@@ -1073,7 +1073,7 @@ var o_options = {
         <div style="background:var(--navy);border-radius:var(--radius-lg);padding:48px;display:flex;flex-direction:column;">
           <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px">03 — Support</div>
           <div style="font-family:'Kumbh Sans',sans-serif;font-size:34px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:16px">Professional<br>Support</div>
-          <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:28px;flex:1">On-staff Fisker engineers available by live chat and email. When your vehicle needs more than a conversation, our team acts directly — remotely.</p>
+          <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:28px;flex:1">On-staff Fisker engineers available by email. When your vehicle needs more than a conversation, our team acts directly — remotely.</p>
           <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;margin-bottom:28px;">
             <div style="display:flex;gap:12px;align-items:flex-start">
               <div style="width:6px;height:6px;border-radius:50%;background:#7db8e8;flex-shrink:0;margin-top:5px;"></div>
@@ -1225,7 +1225,7 @@ var o_options = {
               <div class="uc-pricing"><div class="uc-price">$399</div><div class="uc-price-note">one-time + Tax/VAT</div><button class="btn-add" onclick="showPage('checkout',this)">Get Started →</button><button class="btn-docs" onclick="showPage('updates',this)">📄 User Guide</button></div>
             </div>
             <div class="uc-body">
-              <div class="uc-group"><h4>What's new</h4><ul class="uc-list"><li>Smartphone projection (Android Auto &amp; Apple CarPlay)</li><li>Phone mirroring and AI voice control</li><li>Autokit integration for Android and iOS</li><li>PKC 22 — optimized BLE connectivity, FOB responsiveness & battery life</li><li>Improved fob response and remote power on</li><li>California Mode</li><li>Siri, Google Assistant, and Alexa support</li></ul></div>
+              <div class="uc-group"><h4>What's new</h4><ul class="uc-list"><li>Smartphone projection (Android Auto &amp; Apple CarPlay)</li><li>Phone mirroring and AI voice control</li><li>Autokit integration for Android and iOS</li><li>PKC 22 — optimized BLE connectivity, FOB responsiveness & battery life</li><li>Improved fob response and remote power on</li><li>California Mode</li><li>Siri and Google Assistant support</li></ul></div>
               <div class="uc-group"><h4>Important notes</h4><ul class="uc-list"><li>Requires USB hardware kit (included with purchase)</li><li>Must have OS 2.5 installed first</li><li>OTA delivery — no dealer visit required</li><li>Available in North America and Europe</li></ul></div>
             </div>
             <div class="uc-footer"><span>⚠️ Requires:</span><span class="req-badge">OS 2.5</span><span style="margin-left:auto;display:flex;align-items:center;gap:12px"><span style="font-size:12px;color:var(--blue);font-weight:500">💰 Also in bundles — <a href="#" onclick="showPage('pricing',this);return false;" style="color:var(--blue);font-weight:600;text-decoration:underline">save more</a></span><a href="#" style="color:var(--blue);text-decoration:none;font-size:12px;font-weight:600">📄 2.6 Release Notes</a></span></div>
@@ -2108,6 +2108,15 @@ function ensureAccountButtons() {
     btn.style.display = 'none';
     btn.onclick = function() { navigate('profile'); };
     container.appendChild(btn);
+    var logoutBtn = document.createElement('button');
+    logoutBtn.className = 'btn-login btn-logout';
+    logoutBtn.textContent = 'Logout';
+    logoutBtn.style.display = 'none';
+    logoutBtn.onclick = function() {
+      if (typeof Outseta !== 'undefined' && Outseta.logout) Outseta.logout();
+      navigate('home');
+    };
+    container.appendChild(logoutBtn);
   });
   document.querySelectorAll('.mobile-nav-footer').forEach(function(container) {
     if (container.querySelector('.btn-account')) return;
@@ -2119,6 +2128,18 @@ function ensureAccountButtons() {
     btn.style.display = 'none';
     btn.onclick = function() { navigate('profile'); closeMobileNav(); };
     container.appendChild(btn);
+    var logoutBtn = document.createElement('button');
+    logoutBtn.className = 'btn-login btn-logout';
+    logoutBtn.textContent = 'Logout';
+    logoutBtn.style.width = '100%';
+    logoutBtn.style.justifyContent = 'center';
+    logoutBtn.style.display = 'none';
+    logoutBtn.onclick = function() {
+      if (typeof Outseta !== 'undefined' && Outseta.logout) Outseta.logout();
+      closeMobileNav();
+      navigate('home');
+    };
+    container.appendChild(logoutBtn);
   });
 }
 function setNavAuthState(loggedIn) {
@@ -2130,6 +2151,9 @@ function setNavAuthState(loggedIn) {
     el.style.display = loggedIn ? 'none' : '';
   });
   document.querySelectorAll('.btn-account').forEach(function(el) {
+    el.style.display = loggedIn ? '' : 'none';
+  });
+  document.querySelectorAll('.btn-logout').forEach(function(el) {
     el.style.display = loggedIn ? '' : 'none';
   });
 }
