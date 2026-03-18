@@ -461,12 +461,25 @@
     padding: 8px 0 16px;
     position: fixed;
     top: var(--nav-h, 64px);
+    bottom: 0;
     left: 0;
     right: 0;
     z-index: 999;
     box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    max-height: calc(100vh - var(--nav-h, 64px));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .mobile-nav-drawer.open { display: flex; }
+  body.mobile-nav-open { overflow: hidden; }
+  body.mobile-nav-open nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+  }
+  nav .mobile-nav-drawer { display: none !important; }
 
   .mobile-nav-links {
     list-style: none;
@@ -498,7 +511,20 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding: 14px 20px 4px;
+    padding: 12px 20px 12px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+  .mobile-nav-footer .btn-login,
+  .mobile-nav-footer .btn-signup,
+  .mobile-nav-footer .btn-account,
+  .mobile-nav-footer .btn-logout {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 15px;
+    margin-top: 2px;
   }
 
   @media (max-width: 900px) {
@@ -557,9 +583,12 @@
   @media (max-width: 640px) {
 
     /* Nav — hamburger menu */
+    nav { position: sticky; top: 0; z-index: 1001; }
     .nav-links { display: none; }
-    .btn-login { display: none; }
-    .btn-signup { display: none; }
+    .nav-right .btn-login,
+    .nav-right .btn-signup,
+    .nav-right .btn-account,
+    .nav-right .btn-logout { display: none; }
     .nav-hamburger { display: flex; }
     .nav-inner { padding: 0 20px; }
 
@@ -665,7 +694,7 @@
     }
 
     /* Checkout embed container */
-    #page-checkout .inner > div[style*="max-width:580px"] { padding: 28px 24px; }
+    #page-checkout .inner > div[style*="max-width:580px"] { padding: 28px 0px; }
 
     /* Buttons full width on mobile */
     .hero-ctas { flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -2103,7 +2132,7 @@ function ensureAccountButtons() {
   document.querySelectorAll('.nav-right').forEach(function(container) {
     if (container.querySelector('.btn-account')) return;
     var btn = document.createElement('button');
-    btn.className = 'btn-login btn-account';
+    btn.className = 'btn-signup btn-account';
     btn.textContent = 'My Account';
     btn.style.display = 'none';
     btn.onclick = function() { navigate('profile'); };
@@ -2271,8 +2300,10 @@ function toggleMobileNav(btn) {
   var drawer = document.getElementById('mobileNavDrawer');
   if (isOpen) {
     drawer.classList.add('open');
+    document.body.classList.add('mobile-nav-open');
   } else {
     drawer.classList.remove('open');
+    document.body.classList.remove('mobile-nav-open');
   }
 }
 function closeMobileNav() {
@@ -2281,6 +2312,7 @@ function closeMobileNav() {
   });
   var drawer = document.getElementById('mobileNavDrawer');
   if (drawer) drawer.classList.remove('open');
+  document.body.classList.remove('mobile-nav-open');
 }
 
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
