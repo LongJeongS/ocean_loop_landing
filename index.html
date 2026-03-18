@@ -681,13 +681,13 @@
 var isProd = window.location.origin === 'https://ocean.ovloop.com';
 var o_options = {
     domain: 'ov-loop.outseta.com',
-    load: 'auth,customForm,emailList,leadCapture,profile,support',
+    load: 'auth,customForm,emailList,leadCapture,nocode,profile,support',
     monitorDom: true,
+    tokenStorage: 'local',
     auth: {
       authenticationCallbackUrl: isProd ? null : window.location.origin + '/profile',
       registrationConfirmationUrl: isProd ? null : window.location.origin + '/checkout'
     },
-    callback: function() {}
 };
 </script>
 <script src="https://cdn.outseta.com/outseta.min.js"
