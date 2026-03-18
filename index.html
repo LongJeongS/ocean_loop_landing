@@ -2099,10 +2099,7 @@ var SLUGS = {
 };
 
 // ─── AUTH STATE ───────────────────────────────────────────────────────────────
-function updateNavAuth() {
-  if (typeof Outseta === 'undefined') return;
-  var user = Outseta.getUser ? Outseta.getUser() : null;
-  var loggedIn = !!(user && user.Email);
+function setNavAuthState(loggedIn) {
   document.querySelectorAll('.btn-login').forEach(function(el) {
     el.style.display = loggedIn ? 'none' : '';
   });
@@ -2112,6 +2109,33 @@ function updateNavAuth() {
   document.querySelectorAll('.btn-account').forEach(function(el) {
     el.style.display = loggedIn ? '' : 'none';
   });
+}
+function updateNavAuth() {
+  if (typeof Outseta === 'undefined') return;
+  var token = null;
+  if (Outseta.getAccessToken) {
+    try { token = Outseta.getAccessToken(); } catch(e) {}
+  }
+  setNavAuthState(!!token);
+  function applyUserState(user) {
+    var hasUser = !!(user && (user.Email || user.email));
+    var latestToken = token;
+    if (Outseta.getAccessToken) {
+      try { latestToken = Outseta.getAccessToken(); } catch(e) {}
+    }
+    setNavAuthState(hasUser || !!latestToken);
+  }
+  if (!Outseta.getUser) return;
+  try {
+    var userResult = Outseta.getUser();
+    if (userResult && typeof userResult.then === 'function') {
+      userResult.then(applyUserState).catch(function() { applyUserState(null); });
+    } else {
+      applyUserState(userResult);
+    }
+  } catch(e) {
+    applyUserState(null);
+  }
 }
 function applyNavAuth() { updateNavAuth(); }
 
