@@ -678,9 +678,14 @@
 
 </style>
 <script>
+var isProd = window.location.origin === 'https://ocean.ovloop.com';
 var o_options = {
     domain: 'ov-loop.outseta.com',
     load: 'auth,customForm,emailList,leadCapture,profile,support',
+    auth: {
+      authenticationCallbackUrl: isProd ? null : window.location.origin + '/profile',
+      registrationConfirmationUrl: isProd ? null : window.location.origin + '/checkout'
+    },
     callback: function() {}
 };
 </script>
@@ -2010,7 +2015,6 @@ var o_options = {
            data-o-auth="1"
            data-mode="embed"
            data-widget-mode="login"
-           data-authentication-callback-url="/profile"
            data-o-spa="0">
       </div>
     </div>
