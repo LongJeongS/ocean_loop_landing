@@ -410,7 +410,7 @@
   .uc-price-note { font-size: 11px; color: var(--text-light); margin-bottom: 14px; }
   .btn-add { padding: 10px 18px; background: var(--orange); color: #fff; border: none; border-radius: 8px; font-family: 'Kumbh Sans', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
   .btn-add:hover { background: var(--orange-light); }
-  .btn-docs { padding: 10px 18px; background: transparent; color: var(--text-mid); border: 1px solid var(--border); border-radius: 8px; font-family: 'Kumbh Sans', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; margin-left: 8px; }
+  .btn-docs { display: inline-block; padding: 10px 18px; background: transparent; color: var(--text-mid); border: 1px solid var(--border); border-radius: 8px; font-family: 'Kumbh Sans', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; margin-left: 8px; text-decoration: none; }
   .btn-docs:hover { background: var(--surface-2); }
   .uc-body { padding: 26px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .uc-group h4 { font-size: 10px; font-weight: 700; color: var(--text-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
@@ -654,7 +654,10 @@
     .uc-pricing { text-align: left; }
     .uc-price { font-size: 26px; }
     .uc-header h2 { font-size: 22px; }
-    .btn-add, .btn-docs { width: 100%; text-align: center; margin-top: 4px; box-sizing: border-box; }
+    .btn-add, .btn-docs { display: block; width: 100%; text-align: center; margin-top: 4px; box-sizing: border-box; margin-left: 0; }
+    /* OS coming soon banner — stack on mobile */
+    .os-coming-banner { flex-wrap: wrap; }
+    .os-coming-banner .btn-docs { width: 100%; margin-top: 4px; }
 
     /* Inline grid overrides in HTML */
     [style*="grid-template-columns:1fr 1fr 1fr"],
@@ -1051,7 +1054,7 @@ var o_options = {
     <button class="btn-white" data-route="checkout">Sign up now</button>
   </section>
 
-  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
+  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a><a href="/privacy_policy" data-route="privacy_policy">Privacy Policy</a><a href="/terms_of_service" data-route="terms_of_service">Terms of Service</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
 </div>
 
 <!-- ═══════════════════════════════════ FEATURES ═══════════════════════════════════ -->
@@ -1211,7 +1214,7 @@ var o_options = {
           <div class="app-feat-card" style="opacity:0.5;border-style:dashed"><div class="af-icon">＋</div><h4>More coming</h4><p>Continuous updates with your subscription.</p></div>
         </div>
       </div>
-      <div class="app-mockup" style="background:none;border:none;height:auto;padding:0;"><img src="assets/extracted/img-005.png" alt="O Loop App Screenshot" style="width:100%;max-width:300px;border-radius:24px;box-shadow:0 32px 80px rgba(0,0,0,0.5);display:block;margin:0 auto;" loading="lazy" decoding="async"></div>
+      <div class="app-mockup" style="background:none;border:none;height:auto;padding:0;"><img src="assets/o_loop_app.png" alt="O Loop App Screenshot" style="width:100%;max-width:300px;border-radius:24px;box-shadow:0 32px 80px rgba(0,0,0,0.5);display:block;margin:0 auto;" loading="lazy" decoding="async"></div>
     </div>
   </section>
 
@@ -1298,7 +1301,6 @@ var o_options = {
                 <li>Automatic display brightness</li>
                 <li>HVAC persistence across drive cycles</li>
                 <li>Optimized Android Auto graphics for landscape</li>
-                <li>Seamless O Loop app 1.2 integration</li>
               </ul></div>
               <div class="uc-group"><h4>Bug fixes</h4><ul class="uc-list">
                 <li>Intermittent OPD turning on unexpectedly</li>
@@ -1311,7 +1313,7 @@ var o_options = {
                 <li>AI Box landscape mode requires owner-purchased AI Box device</li>
               </ul></div>
             </div>
-            <div class="uc-footer"><span>⚠️ Requires:</span><span class="req-badge">OS 2.6</span><span style="margin-left:auto;display:flex;align-items:center;gap:12px"><span style="font-size:12px;color:var(--text-light);font-weight:500">💰 Bundle pricing available on release — <a href="/pricing" data-route="pricing" style="color:var(--blue);font-weight:600;text-decoration:underline">see pricing</a></span><a href="#" style="color:var(--blue);text-decoration:none;font-size:12px;font-weight:600">📄 2.7 Release Notes</a></span></div>
+            <div class="uc-footer"><span>⚠️ Requires:</span><span class="req-badge">OS 2.6</span><span style="margin-left:auto;display:flex;align-items:center;gap:12px"><span style="font-size:12px;color:var(--text-light);font-weight:500">💰 Bundle pricing available on release — <a href="/pricing" data-route="pricing" style="color:var(--blue);font-weight:600;text-decoration:underline">see pricing</a></span></span></div>
           </div>
         </div>
         <div class="timeline-item">
@@ -1319,13 +1321,13 @@ var o_options = {
           <div class="update-card">
             <div class="uc-header">
               <div><div class="uc-version-label">Latest Release</div><h2>OS 2.6</h2><p>Android Auto &amp; Apple CarPlay via hardware kit. Smartphone projection, phone mirroring, Voice AI, PKC 22 integration, and deeper media integration.</p></div>
-              <div class="uc-pricing"><div class="uc-price">$399</div><div class="uc-price-note">one-time + Tax/VAT</div><button class="btn-add" data-route="checkout">Get Started →</button><button class="btn-docs" data-route="updates">📄 User Guide</button></div>
+              <div class="uc-pricing"><div class="uc-price">$399</div><div class="uc-price-note">one-time + Tax/VAT</div><button class="btn-add" data-route="checkout">Get Started →</button><a href="https://ovloop.com/wp-content/uploads/2025/12/Ocean-Loop-OTA-2.6-UserGuide-rev1.5.pdf" target="_blank" rel="noopener noreferrer" class="btn-docs">📄 User Guide</a></div>
             </div>
             <div class="uc-body">
               <div class="uc-group"><h4>What's new</h4><ul class="uc-list"><li>Smartphone projection (Android Auto &amp; Apple CarPlay)</li><li>Phone mirroring and AI voice control</li><li>Autokit integration for Android and iOS</li><li>PKC 22 — optimized BLE connectivity, FOB responsiveness & battery life</li><li>Improved fob response and remote power on</li><li>California Mode</li><li>Siri and Google Assistant support</li></ul></div>
               <div class="uc-group"><h4>Important notes</h4><ul class="uc-list"><li>Requires USB hardware kit (included with purchase)</li><li>Must have OS 2.5 installed first</li><li>OTA delivery — no dealer visit required</li><li>Available in North America and Europe</li></ul></div>
             </div>
-            <div class="uc-footer"><span>⚠️ Requires:</span><span class="req-badge">OS 2.5</span><span style="margin-left:auto;display:flex;align-items:center;gap:12px"><span style="font-size:12px;color:var(--blue);font-weight:500">💰 Also in bundles — <a href="/pricing" data-route="pricing" style="color:var(--blue);font-weight:600;text-decoration:underline">save more</a></span><a href="#" style="color:var(--blue);text-decoration:none;font-size:12px;font-weight:600">📄 2.6 Release Notes</a></span></div>
+            <div class="uc-footer"><span>⚠️ Requires:</span><span class="req-badge">OS 2.5</span><span style="margin-left:auto;display:flex;align-items:center;gap:12px"><span style="font-size:12px;color:var(--blue);font-weight:500">💰 Also in bundles — <a href="/pricing" data-route="pricing" style="color:var(--blue);font-weight:600;text-decoration:underline">save more</a></span><a href="https://ovloop.com/wp-content/uploads/2025/12/Ocean-Loop-2.6-Release-Notes-1.0-1.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:none;font-size:12px;font-weight:600">📄 2.6 Release Notes</a></span></div>
           </div>
         </div>
         <div class="timeline-item">
@@ -1333,13 +1335,13 @@ var o_options = {
           <div class="update-card">
             <div class="uc-header">
               <div><div class="uc-version-label">Available Now</div><h2>OS 2.5</h2><p>Major infotainment, performance, and UI upgrades — delivered entirely over-the-air with no additional hardware.</p></div>
-              <div class="uc-pricing"><div class="uc-price">$199</div><div class="uc-price-note">one-time + Tax/VAT</div><button class="btn-add" data-route="checkout">Get Started →</button><button class="btn-docs" data-route="updates">📄 User Guide</button></div>
+              <div class="uc-pricing"><div class="uc-price">$199</div><div class="uc-price-note">one-time + Tax/VAT</div><button class="btn-add" data-route="checkout">Get Started →</button></div>
             </div>
             <div class="uc-body">
               <div class="uc-group"><h4>What's new</h4><ul class="uc-list"><li>Dark/bright mode toggle</li><li>Torque vectoring and range reset</li><li>Ambient light sync and climate control refinements</li><li>Bluetooth/media improvements</li><li>Wi-Fi tethering support</li><li>Center Infotainment Display (CID) fixes</li></ul></div>
               <div class="uc-group"><h4>Important notes</h4><ul class="uc-list"><li>No additional hardware required</li><li>Requires OS 2.2.3 first</li><li>Allow 2–3 business days after purchase for icon to appear</li><li>~1 hour install with vehicle stationary</li></ul></div>
             </div>
-            <div class="uc-footer"><span>⚠️ Requires:</span><span class="req-badge">OS 2.2.3</span><span style="margin-left:auto;display:flex;align-items:center;gap:12px"><span style="font-size:12px;color:var(--blue);font-weight:500">💰 Also in bundles — <a href="/pricing" data-route="pricing" style="color:var(--blue);font-weight:600;text-decoration:underline">save more</a></span><a href="#" style="color:var(--blue);text-decoration:none;font-size:12px;font-weight:600">📄 2.5 Release Notes</a></span></div>
+            <div class="uc-footer"><span>⚠️ Requires:</span><span class="req-badge">OS 2.2.3</span><span style="margin-left:auto;display:flex;align-items:center;gap:12px"><span style="font-size:12px;color:var(--blue);font-weight:500">💰 Also in bundles — <a href="/pricing" data-route="pricing" style="color:var(--blue);font-weight:600;text-decoration:underline">save more</a></span></div>
           </div>
         </div>
         <div class="timeline-item">
@@ -1363,9 +1365,9 @@ var o_options = {
       <p class="section-sub" style="margin-bottom:36px">A look at what's actively in development for future OS releases beyond 2.6.</p>
 
       <!-- OS 2.7 upcoming notice -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;display:flex;align-items:center;gap:20px;margin-bottom:36px;">
+      <div class="os-coming-banner" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;display:flex;align-items:center;gap:20px;margin-bottom:36px;">
         <div style="width:40px;height:40px;border-radius:50%;background:var(--badge-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">⏳</div>
-        <div>
+        <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:3px">OS 2.7 is coming soon</div>
           <div style="font-size:13px;color:var(--text-mid)">Full landscape AI Box, VCU24 fast charge conditioning, touch bar climate controls, and HVAC persistence — currently in development and not yet available for purchase.</div>
         </div>
@@ -1415,7 +1417,7 @@ var o_options = {
     </div>
   </section>
 
-  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
+  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a><a href="/privacy_policy" data-route="privacy_policy">Privacy Policy</a><a href="/terms_of_service" data-route="terms_of_service">Terms of Service</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
 </div>
 
 <!-- ═══════════════════════════════════ PRICING ═══════════════════════════════════ -->
@@ -1636,7 +1638,7 @@ var o_options = {
     <button class="btn-white" data-route="checkout">Sign up now</button>
   </section>
 
-  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
+  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a><a href="/privacy_policy" data-route="privacy_policy">Privacy Policy</a><a href="/terms_of_service" data-route="terms_of_service">Terms of Service</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
 </div>
 
 <!-- ═══════════════════════════════════ SUPPORT ═══════════════════════════════════ -->
@@ -1742,7 +1744,7 @@ var o_options = {
           <h2 style="font-family:'Kumbh Sans',sans-serif;font-size:26px;color:var(--navy);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)">Subscription & Pricing</h2>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">What's included in the base subscription?</div><div class="faq-full-a">The $499/year subscription includes: cloud connectivity, OTA updates through 2.2.3, remote diagnostics and fixes, the new secure O Loop mobile app, streaming/music access, GPS/time accuracy, PKC (Phone-as-a-Key) support, and phone/email customer support.</div></div>
-            <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">Will OS 2.5 and 2.6 be included in my base subscription?</div><div class="faq-full-a">No. OS 2.5 and 2.6 are optional add-ons priced separately — $199 and $399 respectively (one-time, plus applicable Tax/VAT). You can add them during signup or later from your profile under Plan → Edit options.</div></div>
+            <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">Will OS 2.5 and 2.6 be included in my base subscription?</div><div class="faq-full-a">No. OS 2.5 and 2.6 are optional add-ons priced separately, you can add them during signup or later from your profile under Plan → Edit options.</div></div>
             <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">Can I cancel anytime?</div><div class="faq-full-a">Yes. Your vehicle keeps all installed updates after cancellation, but you'll lose cloud access, support, and eligibility for future OTA updates.</div></div>
             <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">Will features be removed if I unsubscribe?</div><div class="faq-full-a">No. Updates already installed on your vehicle remain active. What you lose is cloud connectivity, the O Loop app access, remote diagnostics, support, and eligibility for future updates.</div></div>
             <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">Will future updates cost extra?</div><div class="faq-full-a">Yes. Future OS versions beyond 2.6 will be optional add-ons priced separately from the base subscription. Pricing will always be communicated in advance.</div></div>
@@ -1801,13 +1803,13 @@ var o_options = {
             <h4 style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:14px">⚡ Quick fix — works for most issues</h4>
             <div style="display:flex;flex-direction:column;gap:10px">
               <div style="display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--text-mid)"><span style="background:var(--badge-bg);color:var(--badge-text);font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px">1</span>Uninstall the O Loop app.</div>
-              <div style="display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--text-mid)"><span style="background:var(--badge-bg);color:var(--badge-text);font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px">2</span>Reinstall the latest version (v1.1.0) from the App Store or Google Play.</div>
+              <div style="display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--text-mid)"><span style="background:var(--badge-bg);color:var(--badge-text);font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px">2</span>Reinstall the latest version from the App Store or Google Play.</div>
               <div style="display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--text-mid)"><span style="background:var(--badge-bg);color:var(--badge-text);font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px">3</span>Open O Loop and sign in. If the password reset email doesn't work, use "Forgot password" directly in the app.</div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;">
-            <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">Password reset link doesn't work</div><div class="faq-full-a">Uninstall → reinstall v1.1.0 → use "Forgot password" directly in the app (don't use the email link).</div></div>
-            <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">App still shows "Link my EV" after pairing</div><div class="faq-full-a">Uninstall → reinstall v1.1.0 → sign in again.</div></div>
+            <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">Password reset link doesn't work</div><div class="faq-full-a">Uninstall → reinstall latest version → use "Forgot password" directly in the app (don't use the email link).</div></div>
+            <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">App still shows "Link my EV" after pairing</div><div class="faq-full-a">Uninstall → reinstall latest version → sign in again.</div></div>
             <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">Some commands don't run</div><div class="faq-full-a">Another app (like OceanLink Pro) may be connected to your Ocean. Force close both OceanLink Pro and O Loop, then open O Loop only.</div></div>
             <div class="faq-full-item"><div class="faq-full-q" onclick="toggleFaqFull(this)">Bluetooth (BLE) won't connect or is unstable</div><div class="faq-full-a">Try in order: (1) Force close and relaunch O Loop. (2) Confirm your Ocean is running OS 2.2.3. (3) Ensure Bluetooth is ON and O Loop has the right permissions (on Android: Location and Nearby devices). (4) Make sure no other app is connected via BLE to your Ocean. (5) Move away from clusters of other BLE devices before retrying.</div></div>
           </div>
@@ -1828,7 +1830,6 @@ var o_options = {
             <div class="shop-card"><div class="shop-state">Florida</div><h4>Volvostop</h4><div class="shop-loc">📍 Pompano Beach</div><span class="mobile-badge mobile-no">No mobile</span></div>
             <div class="shop-card" style="background:var(--surface-2);border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0.6;"><div style="font-size:20px;margin-bottom:6px">🌍</div><div style="font-size:12px;color:var(--text-light)">European partners — visit <a href="https://fisker-service.com" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:none">fisker-service.com</a></div></div>
           </div>
-          <div class="ann-note">For European service partners, visit <a href="https://fisker-service.com" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:none">fisker-service.com</a>.</div>
         </div>
 
         <!-- SECTION: Recalls -->
@@ -1851,7 +1852,7 @@ var o_options = {
     </div><!-- end grid -->
   </div>
 
-  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
+  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a><a href="/privacy_policy" data-route="privacy_policy">Privacy Policy</a><a href="/terms_of_service" data-route="terms_of_service">Terms of Service</a></div><div class="footer-copy">© 2026 OV Loop Inc.</div></div></footer>
 </div>
 
 <!-- ═══════════════════════════════════ CONTACT ═══════════════════════════════════ -->
@@ -1900,7 +1901,7 @@ var o_options = {
     </div>
   </section>
 
-  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
+  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a><a href="/privacy_policy" data-route="privacy_policy">Privacy Policy</a><a href="/terms_of_service" data-route="terms_of_service">Terms of Service</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
 </div>
 
 
@@ -2056,17 +2057,15 @@ var o_options = {
         <div data-o-auth="1"
              data-widget-mode="register"
              data-plan-uid="E9LXwZ9w"
-             data-plan-payment-term="year"
-             data-skip-plan-options="true"
+             data-skip-plan-options="false"
              data-mode="embed"
              data-o-spa="0">
         </div>
       </div>
-
     </div>
   </div>
 
-  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
+  <footer><div class="footer-inner"><div class="footer-logo"><img src="assets/extracted/img-004.png" alt="Ocean Loop" style="height:52px;width:auto;" loading="lazy" decoding="async"></div><div class="footer-links"><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support & FAQ</a><a href="/contact" data-route="contact">Contact</a><a href="/privacy_policy" data-route="privacy_policy">Privacy Policy</a><a href="/terms_of_service" data-route="terms_of_service">Terms of Service</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
 
 
 </div><!-- /page-checkout -->
@@ -2117,7 +2116,7 @@ var o_options = {
       </div>
     </div>
   </div>
-  <footer><div class="footer-inner"><div class="footer-links"><a href="/" data-route="home">Home</a><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support &amp; FAQ</a><a href="/contact" data-route="contact">Contact</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
+  <footer><div class="footer-inner"><div class="footer-links"><a href="/" data-route="home">Home</a><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support &amp; FAQ</a><a href="/contact" data-route="contact">Contact</a><a href="/privacy_policy" data-route="privacy_policy">Privacy Policy</a><a href="/terms_of_service" data-route="terms_of_service">Terms of Service</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
 </div>
 
 <!-- ═══════════════════════════════════ PROFILE ═════════════════════════════════ -->
@@ -2164,7 +2163,361 @@ var o_options = {
       </div>
     </div>
   </div>
-  <footer><div class="footer-inner"><div class="footer-links"><a href="/" data-route="home">Home</a><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support &amp; FAQ</a><a href="/contact" data-route="contact">Contact</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
+  <footer><div class="footer-inner"><div class="footer-links"><a href="/" data-route="home">Home</a><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support &amp; FAQ</a><a href="/contact" data-route="contact">Contact</a><a href="/privacy_policy" data-route="privacy_policy">Privacy Policy</a><a href="/terms_of_service" data-route="terms_of_service">Terms of Service</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
+</div>
+
+<!-- ═══════════════════════════════════ PRIVACY POLICY ═══════════════════════════════════ -->
+<div class="page" id="page-privacy_policy">
+<nav><div class="nav-inner">
+    <div class="nav-logo"><a href="/" data-route="home" style="display:flex;align-items:center;"><img src="assets/extracted/img-001.png" alt="Ocean Loop" style="height:36px;width:auto;" loading="lazy" decoding="async"></a></div>
+    <ul class="nav-links">
+      <li><a href="/" data-route="home">Home</a></li>
+      <li><a href="/features" data-route="features">Features</a></li>
+      <li><a href="/updates" data-route="updates">OS Updates</a></li>
+      <li><a href="/pricing" data-route="pricing">Pricing</a></li>
+      <li><a href="/support" data-route="support">Support &amp; FAQ</a></li>
+    </ul>
+    <div class="nav-right"><button class="btn-login" data-route="login">Login</button><button class="btn-signup" data-route="checkout">🚗 Sign Up</button></div>
+    <button class="nav-hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer-privacy">
+    <ul class="mobile-nav-links">
+      <li><a href="/" data-route="home" data-close-mobile-nav="1">Home</a></li>
+      <li><a href="/features" data-route="features" data-close-mobile-nav="1">Features</a></li>
+      <li><a href="/updates" data-route="updates" data-close-mobile-nav="1">OS Updates</a></li>
+      <li><a href="/pricing" data-route="pricing" data-close-mobile-nav="1">Pricing</a></li>
+      <li><a href="/support" data-route="support" data-close-mobile-nav="1">Support &amp; FAQ</a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <button class="btn-login" data-route="login" data-close-mobile-nav="1">Login</button>
+      <button class="btn-signup" style="width:100%;justify-content:center;" data-route="checkout" data-close-mobile-nav="1">🚗 Sign Up</button>
+    </div>
+  </div>
+</nav>
+  <div style="min-height:calc(100vh - 64px);background:var(--bg);padding:64px 24px 80px;">
+    <div style="max-width:760px;margin:0 auto;">
+      <div style="margin-bottom:40px;">
+        <h1 style="font-family:'DM Serif Display',serif;font-size:40px;color:var(--navy);margin-bottom:8px;">Privacy Policy</h1>
+        <p style="font-size:13px;color:var(--text-light);">Provided by OV Loop, Inc. &amp; Subsidiaries ("OV Loop, Inc.")<br>Effective Date: 05/28/2025</p>
+      </div>
+      <div style="background:var(--surface);border-radius:var(--radius-lg);padding:48px;border:1px solid var(--border);font-size:15px;color:var(--text);line-height:1.8;">
+
+        <p style="margin-bottom:24px;">OV Loop, Inc. ("OVLoop," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, share, and protect your personal information in connection with our Ocean Loop subscription service and any related mobile applications or online portals (collectively, the "Service").</p>
+        <p style="margin-bottom:40px;">By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">1. Information We Collect</h2>
+        <p style="margin-bottom:12px;">We collect information in the following ways:</p>
+        <p style="font-weight:600;margin-bottom:8px;">a. Information You Provide Directly:</p>
+        <ul style="margin-left:24px;margin-bottom:20px;">
+          <li>Name</li>
+          <li>Email address</li>
+          <li>Phone number</li>
+          <li>Vehicle Identification Number (VIN)</li>
+          <li>Billing and payment information (via third-party processors)</li>
+        </ul>
+        <p style="font-weight:600;margin-bottom:8px;">b. Information We Collect Automatically:</p>
+        <ul style="margin-left:24px;margin-bottom:40px;">
+          <li>IP address and browser/device data</li>
+          <li>Usage and activity logs on the web portal or mobile apps</li>
+          <li>Vehicle location, time, and performance data</li>
+          <li>Diagnostic and telematics data</li>
+          <li>Mobile device identifiers and app interaction data (if applicable)</li>
+        </ul>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">2. How We Use Your Information</h2>
+        <p style="margin-bottom:12px;">We use your information to:</p>
+        <ul style="margin-left:24px;margin-bottom:40px;">
+          <li>Provide and maintain the Service</li>
+          <li>Process payments and manage subscriptions</li>
+          <li>Perform vehicle diagnostics and deliver over-the-air ("OTA") updates</li>
+          <li>Send account alerts, customer support messages, and service notices</li>
+          <li>Monitor, analyze, and improve the functionality and performance of the Service</li>
+          <li>Comply with legal and regulatory obligations</li>
+          <li>Prevent fraud and enforce our Terms of Service</li>
+        </ul>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">3. How We Share Your Information</h2>
+        <p style="margin-bottom:12px;">We may share your information with:</p>
+        <p style="font-weight:600;margin-bottom:8px;">a. Service Providers:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Third-party payment processors</li>
+          <li>Hosting providers</li>
+          <li>Analytics and diagnostic tools</li>
+        </ul>
+        <p style="font-weight:600;margin-bottom:8px;">b. Legal and Regulatory Authorities:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>To comply with a legal obligation, court order, or government request</li>
+          <li>To enforce our Terms of Service or protect our rights or property</li>
+        </ul>
+        <p style="font-weight:600;margin-bottom:8px;">c. Business Transfers:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>In connection with a merger, acquisition, reorganization, assignment, or asset sale, your information may be transferred as part of that transaction</li>
+        </ul>
+        <p style="margin-bottom:40px;">We do not sell or rent your personal information to third parties.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">4. Data Retention</h2>
+        <p style="margin-bottom:12px;">We retain your information as long as necessary to:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Provide the Service</li>
+          <li>Comply with our legal obligations</li>
+          <li>Resolve disputes and enforce our agreements</li>
+        </ul>
+        <p style="margin-bottom:40px;">Diagnostic data may be retained for longer periods to support safety, analytics, and product improvement.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">5. Data Security</h2>
+        <p style="margin-bottom:40px;">We use reasonable administrative, technical, and physical security measures to protect your personal information. However, no system is completely secure. We cannot guarantee the security of your data transmitted through the Service.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">6. Your Choices and Rights</h2>
+        <p style="margin-bottom:12px;">You may:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Update your account information through your user portal</li>
+          <li>Opt out of non-essential communications</li>
+          <li>Disable app permissions on your mobile device</li>
+          <li>Cancel your subscription at any time</li>
+        </ul>
+        <p style="margin-bottom:20px;font-style:italic;">Note: Some core features may not function properly if data sharing is disabled.</p>
+        <p style="font-weight:600;margin-bottom:12px;">Over-the-Air Updates and User Control</p>
+        <p style="margin-bottom:12px;">As part of providing the Service, we may deliver software updates or configuration changes to your vehicle systems via over-the-air (OTA) delivery. These updates may be necessary for functionality, diagnostics, or compatibility.</p>
+        <p style="margin-bottom:8px;">You may have the ability to:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Accept or decline certain non-essential OTA updates, depending on your system settings and the type of update.</li>
+          <li>Be informed when critical or required updates are being deployed.</li>
+        </ul>
+        <p style="margin-bottom:8px;">Please note that:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Installed updates are final and cannot be rolled back to a previous version.</li>
+          <li>Declining updates may impact your access to specific features or limit OV Loop's ability to provide diagnostics, support, or compatibility with future services.</li>
+        </ul>
+        <p style="margin-bottom:12px;">If you are a resident of the European Union (EU) or European Economic Area (EEA), you also have the following rights under the General Data Protection Regulation (GDPR):</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>The right to access, correct, or delete your personal data</li>
+          <li>The right to restrict or object to certain types of processing</li>
+          <li>The right to data portability</li>
+          <li>The right to withdraw consent at any time (where applicable)</li>
+          <li>The right to lodge a complaint with your local data protection authority</li>
+        </ul>
+        <p style="margin-bottom:40px;">To exercise any of these rights, please contact us at <a href="mailto:support@ovloop.com" style="color:var(--blue);">support@ovloop.com</a></p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">7. Children's Privacy</h2>
+        <p style="margin-bottom:40px;">The Service is not intended for individuals under 18 years of age. We do not knowingly collect personal data from children.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">8. Third-Party Links and Services</h2>
+        <p style="margin-bottom:40px;">Our Service may contain links to third-party websites or services. This Privacy Policy does not apply to those third parties. We encourage you to review their privacy practices.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">9. International Users and GDPR Compliance</h2>
+        <p style="margin-bottom:16px;">The Service is primarily intended for users in the United States. However, if you are accessing the Service from other regions, including the EU/EEA, your personal data may be transferred to and processed in the United States or other countries with different data protection standards.</p>
+        <p style="margin-bottom:16px;">For transfers from the EU/EEA, we implement appropriate safeguards such as Standard Contractual Clauses (SCCs) to ensure your personal data receives adequate protection as required by GDPR.</p>
+        <p style="margin-bottom:12px;">We process personal data under the following lawful bases as outlined in Article 6 of the GDPR:</p>
+        <ul style="margin-left:24px;margin-bottom:40px;">
+          <li>With your consent</li>
+          <li>To fulfill our contractual obligations to you</li>
+          <li>To comply with legal obligations</li>
+          <li>For our legitimate interests, such as fraud prevention, service improvement, or customer support</li>
+        </ul>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">10. Data Portability and Account Provisioning</h2>
+        <p style="margin-bottom:12px;">We may export and use the personal data you provide (such as name, email, phone number, VIN, and diagnostic information) across OV Loop Inc.'s internal systems, cloud infrastructure, and affiliated services.</p>
+        <p style="margin-bottom:8px;">This includes the ability to:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Transfer your data between systems operated by OV Loop Inc. and its service providers;</li>
+          <li>Use your data to create or prefill user accounts on additional services, mobile apps, or portals we offer that are designed to improve your connected vehicle experience;</li>
+          <li>Contact you about onboarding or accessing such services using your submitted contact details.</li>
+        </ul>
+        <p style="margin-bottom:40px;">These activities are conducted under appropriate legal bases (e.g., contractual necessity or legitimate interests) and are protected by technical, administrative, and legal safeguards. We do not sell your personal data to unaffiliated third parties.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">11. Changes to This Policy</h2>
+        <p style="margin-bottom:40px;">We may update this Privacy Policy periodically. The updated version will be effective as of the date listed above. We will notify you of material changes via email or within the Service.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">12. Contact Us</h2>
+        <p style="margin-bottom:8px;">If you have any questions or concerns regarding this Privacy Policy, or wish to exercise your rights under applicable privacy laws, please contact us at:</p>
+        <p style="margin-bottom:4px;">OV Loop, Inc.</p>
+        <p style="margin-bottom:4px;">73 Holton St</p>
+        <p style="margin-bottom:4px;">Woburn, MA 01801, USA</p>
+        <p>Email: <a href="mailto:support@ovloop.com" style="color:var(--blue);">support@ovloop.com</a></p>
+
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div class="footer-links"><a href="/" data-route="home">Home</a><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support &amp; FAQ</a><a href="/contact" data-route="contact">Contact</a><a href="/privacy_policy" data-route="privacy_policy">Privacy Policy</a><a href="/terms_of_service" data-route="terms_of_service">Terms of Service</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
+</div>
+
+<!-- ═══════════════════════════════════ TERMS OF SERVICE ═══════════════════════════════════ -->
+<div class="page" id="page-terms_of_service">
+<nav><div class="nav-inner">
+    <div class="nav-logo"><a href="/" data-route="home" style="display:flex;align-items:center;"><img src="assets/extracted/img-001.png" alt="Ocean Loop" style="height:36px;width:auto;" loading="lazy" decoding="async"></a></div>
+    <ul class="nav-links">
+      <li><a href="/" data-route="home">Home</a></li>
+      <li><a href="/features" data-route="features">Features</a></li>
+      <li><a href="/updates" data-route="updates">OS Updates</a></li>
+      <li><a href="/pricing" data-route="pricing">Pricing</a></li>
+      <li><a href="/support" data-route="support">Support &amp; FAQ</a></li>
+    </ul>
+    <div class="nav-right"><button class="btn-login" data-route="login">Login</button><button class="btn-signup" data-route="checkout">🚗 Sign Up</button></div>
+    <button class="nav-hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer-tos">
+    <ul class="mobile-nav-links">
+      <li><a href="/" data-route="home" data-close-mobile-nav="1">Home</a></li>
+      <li><a href="/features" data-route="features" data-close-mobile-nav="1">Features</a></li>
+      <li><a href="/updates" data-route="updates" data-close-mobile-nav="1">OS Updates</a></li>
+      <li><a href="/pricing" data-route="pricing" data-close-mobile-nav="1">Pricing</a></li>
+      <li><a href="/support" data-route="support" data-close-mobile-nav="1">Support &amp; FAQ</a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <button class="btn-login" data-route="login" data-close-mobile-nav="1">Login</button>
+      <button class="btn-signup" style="width:100%;justify-content:center;" data-route="checkout" data-close-mobile-nav="1">🚗 Sign Up</button>
+    </div>
+  </div>
+</nav>
+  <div style="min-height:calc(100vh - 64px);background:var(--bg);padding:64px 24px 80px;">
+    <div style="max-width:760px;margin:0 auto;">
+      <div style="margin-bottom:40px;">
+        <h1 style="font-family:'DM Serif Display',serif;font-size:40px;color:var(--navy);margin-bottom:8px;">Terms of Service</h1>
+        <p style="font-size:13px;color:var(--text-light);">Ocean Loop Subscription – Provided by OV Loop Inc.<br>Effective Date: 09/19/2025</p>
+      </div>
+      <div style="background:var(--surface);border-radius:var(--radius-lg);padding:48px;border:1px solid var(--border);font-size:15px;color:var(--text);line-height:1.8;">
+
+        <p style="margin-bottom:24px;">These Terms of Service ("Terms") govern your access to and use of the OceanLoop subscription service and any associated or future mobile applications (the "Service") provided by OV Loop Inc., a Delaware corporation, with offices at 73 Holton St, Woburn, MA 01801, USA ("Company," "we," "us," or "our").</p>
+        <p style="margin-bottom:40px;">By accessing or using the Service, you ("you" or "User") agree to be bound by these Terms. If you do not agree, do not use the Service.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Services</h2>
+        <p style="margin-bottom:12px;">The Service includes cloud-based functionality to support eligible Fisker vehicles, including:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Reconnection of 4G/LTE vehicle connectivity</li>
+          <li>Over-the-Air (OTA) software updates</li>
+          <li>Accurate time and geo-location synchronization</li>
+          <li>Remote diagnostics and vehicle health monitoring</li>
+          <li>Customer support and account management communications</li>
+          <li>Access and interaction through any current or future mobile applications provided by OV Loop Inc.</li>
+        </ul>
+        <p style="margin-bottom:16px;">OV Loop reserves the right to modify, suspend, or discontinue any component of the Service at its sole discretion and without liability. Features and availability may vary depending on vehicle model, hardware compatibility, software version, and geographic location.</p>
+        <p style="margin-bottom:12px;">You acknowledge that OTA updates and diagnostic data collection are essential components of the Service. By using the Service, you expressly consent to:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>The transmission and receipt of software updates to your vehicle without prior notice, which may modify, enhance, or disable certain functionalities.</li>
+          <li>The automatic collection, analysis, and storage of diagnostic, performance, and behavioral data from your vehicle, which may include location, usage patterns, system status, and component data.</li>
+        </ul>
+        <p style="margin-bottom:40px;">To the fullest extent permitted by law, OV Loop disclaims all liability for any damages, including but not limited to data loss, system malfunctions, or disruptions arising from OTA updates or diagnostic processes. You understand and agree that OTA updates may be necessary for the continued operation and security of your vehicle's software systems. The Service, including over-the-air (OTA) updates and diagnostics, is provided on a commercially reasonable, best-efforts basis.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Eligibility &amp; Registration</h2>
+        <p style="margin-bottom:12px;">To subscribe to or access the Service, you must:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Be at least 18 years old</li>
+          <li>Provide accurate personal information including full name, email address, phone number, and VIN</li>
+          <li>Maintain a valid payment method on file</li>
+        </ul>
+        <p style="margin-bottom:40px;">You are responsible for ensuring the accuracy of your registration data. By registering, you authorize OV Loop to use your contact information for account-related communication and support.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Intended Use</h2>
+        <p style="margin-bottom:16px;">The Ocean Loop service is a B2C service intended solely for use by natural persons (individual human users) who own or operate eligible Fisker Ocean vehicles.</p>
+        <p style="margin-bottom:16px;">By subscribing to or using the Service, you represent and warrant that you are a real individual and not acting on behalf of a company, business, or other legal entity.</p>
+        <p style="margin-bottom:16px;">We do not offer or authorize use of the Service by businesses, commercial fleets, or corporate entities.</p>
+        <p style="margin-bottom:40px;">Use of the Service in a commercial context, or by any organization, enterprise, or non-individual party, is expressly prohibited and constitutes a violation of these Terms.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">License and Restrictions</h2>
+        <p style="margin-bottom:12px;">Subject to these Terms, OV Loop grants you a limited, revocable, non-exclusive, non-transferable license to access and use the Service solely in connection with your authorized vehicle(s) for personal, non-commercial use.</p>
+        <p style="margin-bottom:8px;">You may not:</p>
+        <ul style="margin-left:24px;margin-bottom:40px;">
+          <li>Reverse engineer, decompile, disassemble, or derive source code from any portion of the Service</li>
+          <li>Access or use the Service in any way that violates applicable laws or third-party rights</li>
+          <li>Resell, sublicense, or distribute the Service or related software without written authorization</li>
+          <li>Use automated means or scraping tools to access Service data or content</li>
+        </ul>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Subscription Fees and Billing</h2>
+        <p style="margin-bottom:12px;">The Service is available via an annual subscription at $499/year. By subscribing and/or paying for the additional add-on services:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>You authorize OV Loop or its third-party payment processor to charge your payment method on a recurring monthly basis until cancellation.</li>
+          <li>All charges are non-refundable unless otherwise required by law.</li>
+          <li>You may cancel at any time; your subscription will remain active until the end of your billing period.</li>
+        </ul>
+        <p style="margin-bottom:40px;">We reserve the right to change pricing or features with advance notice via email or in-app communication. Continued use after such changes constitutes acceptance.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Service Limitations</h2>
+        <p style="margin-bottom:16px;">Service performance depends on factors beyond OV Loop's control, including but not limited to cellular coverage, software compatibility, network availability, and geographic location. The Service, including over-the-air (OTA) updates and diagnostics, is provided on a commercially reasonable, best-efforts basis and may be temporarily suspended for maintenance, upgrades, third-party outages, or unforeseen technical issues.</p>
+        <p style="margin-bottom:8px;">You acknowledge and agree to the following:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>OV Loop is not liable for the performance, health, or safety of your vehicle, nor the success or reliability of any OTA update or diagnostic action, in the event your vehicle has been modified, serviced, or altered using any third-party software, hardware, or repair services not expressly approved by OV Loop.</li>
+          <li>In such cases, OV Loop makes no guarantees regarding the outcome or functionality of the Service, and you accept full responsibility for any performance issues, malfunctions, or failures that may result.</li>
+          <li>Any corrective repairs or technical support required due to unauthorized modifications will not be included as part of your subscription or update fees. You may be referred to an OV Loop–authorized third-party service center for resolution, and you will be solely responsible for any associated costs.</li>
+        </ul>
+        <p style="margin-bottom:40px;">You also understand that the Service does not guarantee continuous uptime, availability, or uninterrupted delivery of updates and does not replace vehicle insurance, emergency response systems, or professional servicing.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">User Data and Privacy</h2>
+        <p style="margin-bottom:16px;">We collect, use, and process user data as described in our Privacy Policy. If you are an EU/EEA resident, we process your personal data in accordance with the General Data Protection Regulation (GDPR). Depending on the context, this includes processing necessary to perform a contract, based on your consent, to comply with legal obligations, or for our legitimate interests.</p>
+        <p style="margin-bottom:16px;">Your personal data may be transferred to and stored in the United States or other jurisdictions outside the EU/EEA. Where we do so, we implement appropriate safeguards, such as Standard Contractual Clauses (SCCs), to protect your data.</p>
+        <p style="margin-bottom:8px;">You have rights under GDPR, including:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Right to access and correct your personal data</li>
+          <li>Right to erasure ("right to be forgotten")</li>
+          <li>Right to data portability</li>
+          <li>Right to object to or restrict processing</li>
+          <li>Right to withdraw consent</li>
+          <li>Right to lodge a complaint with a Data Protection Authority</li>
+        </ul>
+        <p style="margin-bottom:40px;">For more information, please see our <a href="https://ocean.ovloop.com/privacy_policy" target="_blank" rel="noopener noreferrer" style="color:var(--blue);">Privacy Policy</a></p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Mobile Applications</h2>
+        <p style="margin-bottom:12px;">If you access the Service through a mobile application, you also agree to:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Comply with Apple App Store or Google Play terms of service</li>
+          <li>Receive updates or features pushed via the app</li>
+          <li>Allow notifications for service-related alerts</li>
+        </ul>
+        <p style="margin-bottom:40px;">Mobile apps may collect device information and diagnostic logs for performance and troubleshooting. You may disable push notifications through your device settings.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Disclaimer of Warranties</h2>
+        <p style="margin-bottom:12px;">The Service is provided "as is" and "as available." OV Loop makes no representations or warranties, express or implied, regarding:</p>
+        <ul style="margin-left:24px;margin-bottom:16px;">
+          <li>Accuracy or completeness of data</li>
+          <li>Continuous or uninterrupted access</li>
+          <li>Suitability for any specific purpose</li>
+          <li>Compatibility with third-party products or services</li>
+        </ul>
+        <p style="margin-bottom:40px;">To the fullest extent permitted by law, we disclaim all implied warranties, including merchantability and fitness for a particular purpose.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Limitation of Liability</h2>
+        <p style="margin-bottom:16px;">In no event shall OV Loop Inc. or its affiliates be liable for any indirect, incidental, special, punitive, or consequential damages, including but not limited to loss of data, vehicle malfunction, or business interruption.</p>
+        <p style="margin-bottom:40px;">Our total liability under these Terms shall not exceed the total subscription fees paid by you in the twelve (12) months preceding the claim.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Indemnification</h2>
+        <p style="margin-bottom:12px;">You agree to indemnify, defend, and hold harmless OV Loop Inc., its officers, employees, contractors, affiliates, and service providers from any claims, liabilities, damages, and expenses (including legal fees) arising from:</p>
+        <ul style="margin-left:24px;margin-bottom:40px;">
+          <li>Your use or misuse of the Service</li>
+          <li>Violation of these Terms</li>
+          <li>Infringement of third-party rights</li>
+        </ul>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Dispute Resolution and Arbitration</h2>
+        <p style="margin-bottom:16px;">All disputes, claims, or controversies arising from or related to these Terms or the Service shall be resolved by binding arbitration under the rules of the American Arbitration Association. Arbitration shall take place in Wilmington, Delaware, and shall be governed by Delaware law.</p>
+        <p style="margin-bottom:40px;">You waive the right to trial by jury and agree that any arbitration will be conducted on an individual basis only (no class actions).</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Modification of Terms</h2>
+        <p style="margin-bottom:40px;">We reserve the right to modify these Terms at any time. Updates will be posted within the Service and take effect upon your continued use. If you do not accept changes, you must discontinue use and cancel your subscription.</p>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">General Terms</h2>
+        <ul style="margin-left:24px;margin-bottom:40px;">
+          <li>These Terms constitute the entire agreement between you and OV Loop regarding the Service</li>
+          <li>If any provision is found unenforceable, the remainder shall remain in effect</li>
+          <li>You may not assign your rights without OV Loop's written consent</li>
+          <li>Failure to enforce any provision shall not constitute a waiver</li>
+        </ul>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:16px;">Contact Information</h2>
+        <p style="margin-bottom:4px;">OV Loop Inc.</p>
+        <p style="margin-bottom:4px;">73 Holton St</p>
+        <p style="margin-bottom:4px;">Woburn, MA 01801, USA</p>
+        <p style="margin-bottom:40px;">Email: <a href="mailto:support@ovloop.com" style="color:var(--blue);">support@ovloop.com</a></p>
+
+        <p style="border-top:1px solid var(--border);padding-top:24px;font-style:italic;color:var(--text-mid);">By using the Service, you acknowledge that you have read, understood, and agreed to these Terms.</p>
+
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div class="footer-links"><a href="/" data-route="home">Home</a><a href="/features" data-route="features">Features</a><a href="/updates" data-route="updates">OS Updates</a><a href="/pricing" data-route="pricing">Pricing</a><a href="/support" data-route="support">Support &amp; FAQ</a><a href="/contact" data-route="contact">Contact</a><a href="/privacy_policy" data-route="privacy_policy">Privacy Policy</a><a href="/terms_of_service" data-route="terms_of_service">Terms of Service</a></div><div class="footer-copy">© 2025 OV Loop Inc.</div></div></footer>
 </div>
 
 
@@ -2179,20 +2532,24 @@ var ROUTES = {
   '/pricing':  'pricing',
   '/support':  'support',
   '/contact':  'contact',
-  '/checkout': 'checkout',
-  '/login':    'login',
-  '/profile':  'profile'
+  '/checkout':        'checkout',
+  '/login':           'login',
+  '/profile':         'profile',
+  '/privacy_policy':  'privacy_policy',
+  '/terms_of_service':'terms_of_service'
 };
 var SLUGS = {
-  'home':     '/',
-  'features': '/features',
-  'updates':  '/updates',
-  'pricing':  '/pricing',
-  'support':  '/support',
-  'contact':  '/contact',
-  'checkout': '/checkout',
-  'login':    '/login',
-  'profile':  '/profile'
+  'home':             '/',
+  'features':         '/features',
+  'updates':          '/updates',
+  'pricing':          '/pricing',
+  'support':          '/support',
+  'contact':          '/contact',
+  'checkout':         '/checkout',
+  'login':            '/login',
+  'profile':          '/profile',
+  'privacy_policy':   '/privacy_policy',
+  'terms_of_service': '/terms_of_service'
 };
 
 // ─── AUTH STATE ───────────────────────────────────────────────────────────────
@@ -2445,12 +2802,13 @@ function scrollToFaqSection(id, el) {
   var track = document.getElementById('testimonialTrack');
   if (!track) return;
   var cards = Array.from(track.querySelectorAll('.testimonial-card'));
-  var total = cards.length; var VISIBLE = 3; var current = 0;
+  var total = cards.length; var current = 0;
   var dotsContainer = document.getElementById('carouselDots');
+  function getVisible() { var w = window.innerWidth; return w <= 480 ? 1 : w <= 768 ? 2 : 3; }
   function getW() { return cards[0] ? cards[0].offsetWidth + 20 : 0; }
   function renderDots() {
     if (!dotsContainer) return;
-    var pages = total - VISIBLE + 1; dotsContainer.innerHTML = '';
+    var pages = total - getVisible() + 1; dotsContainer.innerHTML = '';
     for (var i = 0; i < pages; i++) {
       var d = document.createElement('button');
       d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -2459,7 +2817,7 @@ function scrollToFaqSection(id, el) {
     }
   }
   function goTo(index) {
-    var pages = total - VISIBLE + 1;
+    var pages = total - getVisible() + 1;
     current = Math.max(0, Math.min(index, pages - 1));
     track.style.transform = 'translateX(-' + (current * getW()) + 'px)';
     if (dotsContainer) dotsContainer.querySelectorAll('.carousel-dot').forEach(function(d,i) {
@@ -2470,6 +2828,7 @@ function scrollToFaqSection(id, el) {
     if (n) n.disabled = current >= pages - 1;
   }
   window.moveCarousel = function(dir) { goTo(current + dir); };
+  window.addEventListener('resize', function() { current = 0; renderDots(); goTo(0); });
   renderDots(); goTo(0);
 })();
 
