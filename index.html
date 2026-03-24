@@ -765,9 +765,10 @@ var o_options = {
     domain: 'ov-loop.outseta.com',
     load: 'auth,customForm,emailList,leadCapture,nocode,profile,support',
     monitorDom: true,
+    tokenStorage: 'local',
     auth: {
-      authenticationCallbackUrl: isProd ? null : window.location.origin + '/profile',
-      registrationConfirmationUrl: isProd ? null : window.location.origin + '/checkout'
+      authenticationCallbackUrl: window.location.origin + '/profile',
+      registrationConfirmationUrl: window.location.origin + '/checkout'
     },
 };
 </script>
@@ -903,7 +904,7 @@ var o_options = {
       <div class="os-cards-2">
         <div class="os-card-dark"><div class="os-ver">OS 2.5</div><h3>Infotainment & Performance</h3><p>Dark/bright mode, torque vectoring, range reset, ambient light sync, Bluetooth/media improvements, and Wi-Fi tethering.</p><div class="os-price-pill">$299 one-time</div></div>
         <div class="os-card-dark" style="border-color:rgba(232,87,42,0.4)"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div class="os-ver" style="margin-bottom:0">OS 2.6</div><div style="background:var(--orange);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase">Latest</div></div><h3>Android Auto, CarPlay & PKC 22</h3><p>Smartphone projection, phone mirroring, Voice AI, PKC 22 BLE &amp; FOB improvements, improved fob response, remote power on, and California Mode.</p><div class="os-price-pill">$499 one-time</div></div>
-        <div class="os-card-dark" style="border-color:rgba(255,255,255,0.15)"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div class="os-ver" style="margin-bottom:0">OS 2.7</div><div style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase">Upcoming</div></div><h3>AI Box, VCU24 & Landscape Mode</h3><p>Full landscape AI Box with CarPlay/AA, VCU24 fast charge conditioning, touch bar climate controls, and HVAC persistence.</p><div class="os-price-pill">$299 one-time</div></div>
+        <div class="os-card-dark" style="border-color:rgba(255,255,255,0.15)"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div class="os-ver" style="margin-bottom:0">OS 2.7</div><div style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase">Upcoming</div></div><h3>AI Box, VCU24 & Landscape Mode</h3><p>Full landscape AI Box with CarPlay/AA, VCU24 - Powertrain enhancements, touch bar climate controls, and HVAC persistence.</p><div class="os-price-pill">$299 one-time</div></div>
       </div>
       <div style="text-align:center;margin-top:28px"><button class="btn-ghost-white" data-route="updates">See all OS updates →</button></div>
     </div>
@@ -1130,7 +1131,7 @@ var o_options = {
             </div>
             <div style="display:grid;grid-template-columns:148px 1fr;gap:12px 20px;padding:14px 0;border-bottom:1px solid var(--border);">
               <div style="font-size:13px;font-weight:600;color:var(--navy)">Performance</div>
-              <div style="font-size:13px;color:var(--text-mid);line-height:1.5">Torque vectoring, range reset, VCU24 pre-charge conditioning <span style="color:var(--text-light);font-size:11px">(OS 2.7 upcoming)</span></div>
+              <div style="font-size:13px;color:var(--text-mid);line-height:1.5">Torque vectoring, range reset, VCU24 - Powertrain enhancements <span style="color:var(--text-light);font-size:11px">(OS 2.7 upcoming)</span></div>
             </div>
             <div style="display:grid;grid-template-columns:148px 1fr;gap:12px 20px;padding:14px 0;">
               <div style="font-size:13px;font-weight:600;color:var(--navy)">UI upgrades</div>
@@ -1284,7 +1285,7 @@ var o_options = {
               <div>
                 <div class="uc-version-label" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5)">Coming Soon</div>
                 <h2>OS 2.7</h2>
-                <p>Full landscape AI Box with CarPlay &amp; Android Auto, VCU24 pre-charge conditioning for fast chargers, touch bar climate controls, and smarter system performance.</p>
+                <p>Full landscape AI Box with CarPlay &amp; Android Auto, VCU24 - Powertrain enhancements, touch bar climate controls, and smarter system performance.</p>
               </div>
               <div class="uc-pricing" style="padding-top:0;margin-top:0;">
                 <div class="uc-price">$299</div>
@@ -1295,7 +1296,7 @@ var o_options = {
             <div class="uc-body">
               <div class="uc-group"><h4>What's new</h4><ul class="uc-list">
                 <li>Full landscape mode for AI Box with CarPlay or Android Auto <span style="color:var(--text-light);font-size:11px">(requires OS 2.6 + owner-purchased AI Box; streams via phone hotspot)</span></li>
-                <li>VCU24 pre-charge conditioning for fast chargers</li>
+                <li>VCU24 - Powertrain enhancements</li>
                 <li>Enable A/C Auto &amp; Climate Control via touch bar</li>
                 <li>Automatic display brightness</li>
                 <li>HVAC persistence across drive cycles</li>
@@ -1320,7 +1321,7 @@ var o_options = {
           <div class="update-card">
             <div class="uc-header">
               <div><div class="uc-version-label">Latest Release</div><h2>OS 2.6</h2><p>Android Auto &amp; Apple CarPlay via hardware kit. Smartphone projection, phone mirroring, Voice AI, PKC 22 integration, and deeper media integration.</p></div>
-              <div class="uc-pricing"><div class="uc-price">$399</div><div class="uc-price-note">one-time + Tax/VAT</div><button class="btn-add" data-route="checkout">Get Started →</button><a href="https://ovloop.com/wp-content/uploads/2025/12/Ocean-Loop-OTA-2.6-UserGuide-rev1.5.pdf" target="_blank" rel="noopener noreferrer" class="btn-docs">📄 User Guide</a></div>
+              <div class="uc-pricing"><div class="uc-price">$499</div><div class="uc-price-note">one-time + Tax/VAT</div><button class="btn-add" data-route="checkout">Get Started →</button><a href="https://ovloop.com/wp-content/uploads/2025/12/Ocean-Loop-OTA-2.6-UserGuide-rev1.5.pdf" target="_blank" rel="noopener noreferrer" class="btn-docs">📄 User Guide</a></div>
             </div>
             <div class="uc-body">
               <div class="uc-group"><h4>What's new</h4><ul class="uc-list"><li>Smartphone projection (Android Auto &amp; Apple CarPlay)</li><li>Phone mirroring and AI voice control</li><li>Autokit integration for Android and iOS</li><li>PKC 22 — optimized BLE connectivity, FOB responsiveness & battery life</li><li>Improved fob response and remote power on</li><li>California Mode</li><li>Siri and Google Assistant support</li></ul></div>
@@ -1334,7 +1335,7 @@ var o_options = {
           <div class="update-card">
             <div class="uc-header">
               <div><div class="uc-version-label">Available Now</div><h2>OS 2.5</h2><p>Major infotainment, performance, and UI upgrades — delivered entirely over-the-air with no additional hardware.</p></div>
-              <div class="uc-pricing"><div class="uc-price">$199</div><div class="uc-price-note">one-time + Tax/VAT</div><button class="btn-add" data-route="checkout">Get Started →</button></div>
+              <div class="uc-pricing"><div class="uc-price">$299</div><div class="uc-price-note">one-time + Tax/VAT</div><button class="btn-add" data-route="checkout">Get Started →</button></div>
             </div>
             <div class="uc-body">
               <div class="uc-group"><h4>What's new</h4><ul class="uc-list"><li>Dark/bright mode toggle</li><li>Torque vectoring and range reset</li><li>Ambient light sync and climate control refinements</li><li>Bluetooth/media improvements</li><li>Wi-Fi tethering support</li><li>Center Infotainment Display (CID) fixes</li></ul></div>
@@ -1368,7 +1369,7 @@ var o_options = {
         <div style="width:40px;height:40px;border-radius:50%;background:var(--badge-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">⏳</div>
         <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:3px">OS 2.7 is coming soon</div>
-          <div style="font-size:13px;color:var(--text-mid)">Full landscape AI Box, VCU24 fast charge conditioning, touch bar climate controls, and HVAC persistence — currently in development and not yet available for purchase.</div>
+          <div style="font-size:13px;color:var(--text-mid)">Full landscape AI Box, VCU24 - Powertrain enhancements, touch bar climate controls, and HVAC persistence — currently in development and not yet available for purchase.</div>
         </div>
         <button class="btn-docs" style="flex-shrink:0;white-space:nowrap;cursor:default;opacity:0.6">⏳ Coming soon</button>
       </div>
@@ -1405,7 +1406,7 @@ var o_options = {
       <table class="ver-table">
         <thead><tr><th>Version</th><th>Key changes</th><th>Included in</th></tr></thead>
         <tbody>
-          <tr><td><strong style="color:var(--navy)">OS 2.7</strong> <span style="font-size:11px;color:var(--text-light)">(coming soon)</span></td><td>VCU24 pre-charge conditioning, landscape AI Box, HVAC persistence, display brightness, OPD/connectivity fixes</td><td><span class="vb add">Add-on $299</span></td></tr>
+          <tr><td><strong style="color:var(--navy)">OS 2.7</strong> <span style="font-size:11px;color:var(--text-light)">(coming soon)</span></td><td>VCU24 - Powertrain enhancements, landscape AI Box, HVAC persistence, display brightness, OPD/connectivity fixes</td><td><span class="vb add">Add-on $299</span></td></tr>
           <tr><td><strong style="color:var(--navy)">OS 2.6</strong></td><td>Android Auto &amp; CarPlay, phone mirroring, Voice AI, PKC 22, California Mode</td><td><span class="vb add">Add-on $499</span></td></tr>
           <tr><td><strong style="color:var(--navy)">OS 2.5</strong></td><td>Infotainment overhaul, torque vectoring, dark mode, Wi-Fi tethering, CID fixes</td><td><span class="vb add">Add-on $299</span></td></tr>
           <tr><td><strong style="color:var(--navy)">OS 2.2.3</strong></td><td>ECC, AMP, BCM, PKC, VSP, OHC improvements</td><td><span class="vb inc">Base subscription</span></td></tr>
@@ -1564,14 +1565,14 @@ var o_options = {
             <div style="background:var(--badge-bg);color:var(--badge-text);font-size:9px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase">Coming Soon</div>
           </div>
           <div style="font-family:'DM Serif Display',serif;font-size:40px;color:var(--navy);line-height:1;margin-bottom:10px">OS 2.7</div>
-          <div style="font-size:13px;font-weight:500;color:var(--navy);line-height:1.6;margin-bottom:20px;min-height:40px">VCU24 fast charge, landscape AI Box, and HVAC persistence.</div>
+          <div style="font-size:13px;font-weight:500;color:var(--navy);line-height:1.6;margin-bottom:20px;min-height:40px">VCU24 powertrain enhancements, landscape AI Box, and HVAC persistence.</div>
           <div style="display:flex;align-items:baseline;gap:5px;margin-bottom:3px">
             <span style="font-family:'DM Serif Display',serif;font-size:40px;color:var(--navy);line-height:1">$299</span>
             <span style="font-size:12px;color:var(--text-light);font-weight:400">one-time</span>
           </div>
           <div style="font-size:10px;color:var(--text-light);margin-bottom:20px;letter-spacing:0.01em">+ Tax/VAT · Requires OS 2.6 installed first</div>
           <div style="border-top:1px solid var(--border);padding-top:16px;margin-bottom:20px;display:flex;flex-direction:column;gap:8px">
-            <div style="font-size:12px;font-weight:500;color:var(--navy);display:flex;gap:9px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0;margin-top:2px;font-size:10px">✓</span>VCU24 pre-charge conditioning</div>
+            <div style="font-size:12px;font-weight:500;color:var(--navy);display:flex;gap:9px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0;margin-top:2px;font-size:10px">✓</span>VCU24 - Powertrain enhancements</div>
             <div style="font-size:12px;font-weight:500;color:var(--navy);display:flex;gap:9px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0;margin-top:2px;font-size:10px">✓</span>Full landscape AI Box (CarPlay/AA)</div>
             <div style="font-size:11px;font-weight:400;color:var(--text-light);display:flex;gap:9px;align-items:flex-start;font-style:italic"><span style="flex-shrink:0;margin-top:2px;color:var(--border);font-size:10px">+</span>5 more improvements</div>
           </div>
@@ -2036,7 +2037,7 @@ var o_options = {
             <div style="font-family:'DM Serif Display',serif;font-size:18px;color:var(--navy)">$299</div>
           </div>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:0">
-            <li style="font-size:11px;color:var(--text-light);display:flex;gap:7px"><span style="color:var(--blue);flex-shrink:0">✓</span>VCU24 pre-charge conditioning</li>
+            <li style="font-size:11px;color:var(--text-light);display:flex;gap:7px"><span style="color:var(--blue);flex-shrink:0">✓</span>VCU24 - Powertrain enhancements</li>
             <li style="font-size:11px;color:var(--text-light);display:flex;gap:7px"><span style="color:var(--blue);flex-shrink:0">✓</span>Full landscape AI Box (CarPlay/AA)</li>
           </ul>
           <div style="margin-top:10px;font-size:10px;color:var(--text-light);font-style:italic">Requires OS 2.6 installed first</div>
@@ -2718,6 +2719,9 @@ window.addEventListener('popstate', function(e) {
 (function() {
   var path = window.location.pathname;
   var hash = window.location.hash || '';
+  var search = window.location.search || '';
+  var hasAuthCallbackParams = /(^|[?&])(code|state|token|access_token|id_token|refresh_token)=/i.test(search) ||
+    /(access_token|id_token|refresh_token|expires_in|token_type|state)=/i.test(hash);
   if (path !== '/' && path.slice(-1) === '/') path = path.slice(0, -1);
   // Handle direct links like /features# and hash-routed variants.
   if (hash === '#') hash = '';
@@ -2726,9 +2730,13 @@ window.addEventListener('popstate', function(e) {
     if (ROUTES[hashPath]) path = hashPath;
   }
   var id = ROUTES[path] || 'home';
-  try { history.replaceState({ page: id }, '', path || '/'); } catch(e) {}
+  if (!hasAuthCallbackParams) {
+    try { history.replaceState({ page: id }, '', path || '/'); } catch(e) {}
+  }
   navigate(id, null, false);
   setTimeout(updateNavAuth, 300);
+  setTimeout(updateNavAuth, 1200);
+  setTimeout(updateNavAuth, 2500);
 })();
 
 // ─── MOBILE NAV ───────────────────────────────────────────────────────────────
